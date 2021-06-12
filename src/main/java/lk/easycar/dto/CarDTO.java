@@ -23,5 +23,8 @@ public class CarDTO {
     private double priceForExtraKM;
     private String registrationNumber;
     private String color;
+    private String type;
+    private double lossDamageWaiver;
     private String status;
+
 }

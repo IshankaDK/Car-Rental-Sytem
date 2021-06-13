@@ -20,6 +20,8 @@ public class RentDetailsDTO {
     private String startDate;
     private String endDate;
     private int duration;
+    private double rate;
+    private int extraKM;
     private double cost;
     private String status;
     private Car carId;

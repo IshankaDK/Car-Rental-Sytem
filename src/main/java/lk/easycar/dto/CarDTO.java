@@ -14,17 +14,20 @@ import lombok.NoArgsConstructor;
 public class CarDTO {
     private String carId;
     private String brand;
+    private String carType;
     private int noOfPassengers;
     private String transmissionType;
     private String fuelType;
-    private double dailyRate;
-    private double monthlyRate;
-    private String freeMileage;
-    private double priceForExtraKM;
-    private String registrationNumber;
     private String color;
-    private String type;
+    private String registrationNumber;
+
+    private double dailyRate;
+    private int freeMileageForADay;
+    private double monthlyRate;
+    private int freeMileageForAMonth;
+    private double priceForExtraKM;
     private double lossDamageWaiver;
+
     private String status;
 
 }

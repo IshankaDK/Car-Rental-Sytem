@@ -24,6 +24,5 @@ public class Rent {
     private Customer customerEmail;
     @OneToMany(mappedBy = "rentId",cascade = CascadeType.ALL)
     private List<RentDetails> rentDetails = new ArrayList<>();
-//    private
 
 }

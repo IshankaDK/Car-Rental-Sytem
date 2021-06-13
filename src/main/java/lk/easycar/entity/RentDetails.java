@@ -20,6 +20,8 @@ public class RentDetails {
     private String startDate;
     private String endDate;
     private int duration;
+    private double rate;
+    private int extraKM;
     private double cost;
     private String status;
     @ManyToOne
@@ -31,6 +33,5 @@ public class RentDetails {
     @ManyToOne
     @JoinColumn(name = "driverId",referencedColumnName = "driverId",insertable = false,updatable = false)
     private Driver driverId;
-
 
 }

@@ -19,10 +19,20 @@ import java.util.List;
 public class Rent {
     @Id
     private String rentId;
+    private String startDate;
+    private String endDate;
+    private int duration;
+    private double rate;
+    private double cost;
+    private int extraKM;
+    private String status;
     @ManyToOne
     @JoinColumn(name = "customerEmail",referencedColumnName = "email")
     private Customer customerEmail;
-    @OneToMany(mappedBy = "rentId",cascade = CascadeType.ALL)
-    private List<RentDetails> rentDetails = new ArrayList<>();
-
+    @ManyToOne
+    @JoinColumn(name = "carId",referencedColumnName = "carId")
+    private Car carId;
+    @ManyToOne
+    @JoinColumn(name = "driverId",referencedColumnName = "driverId")
+    private Driver driverId;
 }

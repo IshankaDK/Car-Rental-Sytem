@@ -1,11 +1,11 @@
 package lk.easycar.dto;
 
+import lk.easycar.entity.Car;
+import lk.easycar.entity.Customer;
+import lk.easycar.entity.Driver;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author ishanka on 6/13/21 at 12:24 AM
@@ -16,6 +16,14 @@ import java.util.List;
 @Data
 public class RentDTO {
     private String rentId;
-    private CustomerDTO customerId;
-    private List<RentDetailsDTO> rentDetails = new ArrayList<>();
+    private String startDate;
+    private String endDate;
+    private int duration;
+    private double rate;
+    private double cost;
+    private int extraKM;
+    private String status;
+    private Customer customerEmail;
+    private Car carId;
+    private Driver driverId;
 }

@@ -31,22 +31,16 @@ public class CustomerController {
             return b;
     }
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean saveFile(@RequestPart("nic") MultipartFile myFile) {
-
-        System.out.println(myFile.getOriginalFilename());;
-
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean saveNICAndLicenseFiles(@RequestPart("nic") MultipartFile myFile, @RequestPart("license") MultipartFile licenseFile) {
         try {
-            // Let's get the project location
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            // Let's create a folder there for uploading purposes, if not exists
             File uploadsDir = new File(projectPath + "/customer");
             uploadsDir.mkdir();
-            // It is time to transfer the file into the newly created dir
             myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
-            System.out.println(projectPath);
-            System.out.println(uploadsDir.getAbsolutePath());
+            licenseFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + licenseFile.getOriginalFilename()));
             System.out.println(myFile.getOriginalFilename());
+            System.out.println(licenseFile.getOriginalFilename());
             return true;
         } catch (URISyntaxException e) {
             e.printStackTrace();
@@ -56,10 +50,12 @@ public class CustomerController {
             return false;
         }
     }
+
     public void deleteCustomer(@RequestParam String email) {
         boolean b = service.deleteCustomer(email);
     }
 
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void updateCustomer(@RequestBody CustomerDTO dto) {
         boolean b = service.updateCustomer(dto);
     }

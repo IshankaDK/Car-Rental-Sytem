@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * @since 0.0.1
  */
 public interface RentService {
-    void AddRent(RentDTO dto);
-    void deleteRent(String id);
-    void updateRent(RentDTO dto);
+    boolean AddRent(RentDTO dto);
+    boolean deleteRent(String id);
+    boolean updateRent(RentDTO dto);
     RentDTO searchRent(String id);
     ArrayList<RentDTO> getAllRents();
 }

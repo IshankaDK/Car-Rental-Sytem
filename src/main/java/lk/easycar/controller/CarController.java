@@ -45,7 +45,7 @@ public class CarController {
         return flag;
     }
 
-    @GetMapping(params = {"id"})
+    @GetMapping(params = {"id"} ,produces = MediaType.APPLICATION_JSON_VALUE)
     public CarDTO searchCar(@RequestParam String id) {
         CarDTO carDTO = service.searchCar(id);
         System.out.println(carDTO.toString());

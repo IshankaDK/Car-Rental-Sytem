@@ -19,7 +19,8 @@ public class RentDTO {
     private String startDate;
     private String endDate;
     private int duration;
-    private double rate;
+    private double monthRate;
+    private double dayRate;
     private double cost;
     private int extraKM;
     private String status;

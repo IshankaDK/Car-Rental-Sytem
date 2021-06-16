@@ -1,6 +1,8 @@
 package lk.easycar.controller;
 
+import lk.easycar.dto.CarDTO;
 import lk.easycar.dto.RentDTO;
+import lk.easycar.service.CarService;
 import lk.easycar.service.CustomerService;
 import lk.easycar.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ public class RentController {
     private RentService service;
 
 
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public boolean saveRent(@RequestBody RentDTO dto){
         System.out.println(dto.toString());
@@ -37,4 +40,6 @@ public class RentController {
         }
         return allRents;
     }
+
+
 }

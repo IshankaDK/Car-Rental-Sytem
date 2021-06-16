@@ -60,8 +60,11 @@ public class CustomerController {
         boolean b = service.updateCustomer(dto);
     }
 
-    public void searchCustomer(@RequestParam String email) {
+    @GetMapping(params = {"email"} ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public CustomerDTO searchCustomer(@RequestParam String email) {
         CustomerDTO customerDTO = service.searchCustomer(email);
+        System.out.println(customerDTO);
+        return customerDTO;
     }
 
     public void getAllCustomers() {

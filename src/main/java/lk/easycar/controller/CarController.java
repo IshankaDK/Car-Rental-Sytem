@@ -60,4 +60,20 @@ public class CarController {
         }
         return allCars;
     }
+    @GetMapping(params = {"type"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<CarDTO>  searchCarByType(String type){
+        ArrayList<CarDTO> carByType = service.findCarByType(type);
+        for (CarDTO carDTO : carByType) {
+            System.out.println(carDTO.toString());
+        }
+        return carByType;
+    }
+    @GetMapping(params = {"brand"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<CarDTO>  searchCarByBrand(String brand){
+        ArrayList<CarDTO> carByBrand= service.findCarByBrand(brand);
+        for (CarDTO carDTO : carByBrand) {
+            System.out.println(carDTO.toString());
+        }
+        return carByBrand;
+    }
 }

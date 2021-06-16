@@ -24,27 +24,37 @@ public class DriverController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public boolean saveDriver(@RequestBody DriverDTO dto) {
         boolean b = service.AddDriver(dto);
-        System.out.println(b+" driver saved");
+        System.out.println(b + " driver saved");
         return b;
     }
-    public void deleteDriver(@RequestParam String id) {
-        boolean b = service.deleteDriver(id);
+
+    @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public boolean deleteDriver(@RequestBody DriverDTO driverDTO) {
+        boolean b = service.deleteDriver(driverDTO.getDriverId());
+        return b;
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateDriver(@RequestBody DriverDTO dto) {
+    public boolean updateDriver(@RequestBody DriverDTO dto) {
         boolean b = service.updateDriver(dto);
+        return b;
     }
 
-    @GetMapping(params = {"id"} ,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(params = {"id"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public DriverDTO searchDriver(@RequestParam String id) {
         DriverDTO driverDTO = service.searchDriver(id);
         return driverDTO;
     }
 
+    @GetMapping(params = {"status"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<DriverDTO>  searchDriverByStatus(@RequestParam String status) {
+        ArrayList<DriverDTO> byStatus = service.findByStatus(status);
+        return byStatus;
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<DriverDTO> getAllDrivers() {
-        ArrayList<DriverDTO> list= service.getAllDriver();
+        ArrayList<DriverDTO> list = service.getAllDriver();
         return list;
     }
 }

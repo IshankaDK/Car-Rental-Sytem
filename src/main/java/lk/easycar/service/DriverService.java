@@ -15,4 +15,5 @@ public interface DriverService {
     boolean updateDriver(DriverDTO dto);
     DriverDTO searchDriver(String id);
     ArrayList<DriverDTO> getAllDriver();
+    ArrayList<DriverDTO> findByStatus(String status);
 }

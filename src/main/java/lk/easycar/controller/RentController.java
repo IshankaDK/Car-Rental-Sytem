@@ -8,7 +8,11 @@ import lk.easycar.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -31,7 +35,23 @@ public class RentController {
         System.out.println(flag +"Rent Save");
         return flag;
     }
-
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean saveNICAndLicenseFiles(@RequestPart("receipt") MultipartFile myFile) {
+        try {
+            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+            File uploadsDir = new File(projectPath + "/rent");
+            uploadsDir.mkdir();
+            myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
+            System.out.println(myFile.getOriginalFilename());
+            return true;
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     @GetMapping
     public ArrayList<RentDTO>  getAll(){
         ArrayList<RentDTO> allRents = service.getAllRents();

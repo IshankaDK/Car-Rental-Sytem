@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public interface RentService {
     boolean AddRent(RentDTO dto);
-    boolean deleteRent(String id);
+    boolean deleteRent(Long id);
     boolean updateRent(RentDTO dto);
-    RentDTO searchRent(String id);
+    RentDTO searchRent(Long id);
     ArrayList<RentDTO> getAllRents();
 }

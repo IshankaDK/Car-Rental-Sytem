@@ -38,7 +38,7 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public boolean deleteRent(String id) {
+    public boolean deleteRent(Long id) {
         if (!rentRepo.existsById(id)) {
             return false;
         }
@@ -56,7 +56,7 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public RentDTO searchRent(String id) {
+    public RentDTO searchRent(Long id) {
         Optional<Rent> rent = rentRepo.findById(id);
         if (rent.isPresent()){
             return mapper.map(rent.get(), RentDTO.class);

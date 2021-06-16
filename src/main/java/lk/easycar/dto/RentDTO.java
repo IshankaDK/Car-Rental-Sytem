@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class RentDTO {
-    private String rentId;
+    private Long rentId;
     private String startDate;
     private String endDate;
     private int duration;

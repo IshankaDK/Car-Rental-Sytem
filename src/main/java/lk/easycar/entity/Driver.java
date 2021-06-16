@@ -20,6 +20,6 @@ public class Driver {
     private String driverId;
     private String driverName;
     private String driverAddress;
-    private String diverContact;
+    private String driverContact;
     private String driverStatus;
 }

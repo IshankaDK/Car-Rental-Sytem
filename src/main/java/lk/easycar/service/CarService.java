@@ -17,4 +17,5 @@ public interface CarService {
     ArrayList<CarDTO> getAllCars();
     ArrayList<CarDTO> findCarByType(String type);
     ArrayList<CarDTO> findCarByBrand(String brand);
+    ArrayList<CarDTO> findCarByStatus(String status);
 }

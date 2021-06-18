@@ -76,4 +76,13 @@ public class CarController {
         }
         return carByBrand;
     }
+
+    @GetMapping(params = {"status"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<CarDTO>  searchCarByAvailability(String status){
+        ArrayList<CarDTO> carByStatus = service.findCarByStatus(status);
+        for (CarDTO carDTO : carByStatus) {
+            System.out.println(carDTO.toString());
+        }
+        return carByStatus;
+    }
 }

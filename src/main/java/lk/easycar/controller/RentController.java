@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * @author ishanka on 6/14/21 at 10:27 PM
@@ -36,10 +37,13 @@ public class RentController {
         return flag;
     }
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean saveNICAndLicenseFiles(@RequestPart("receipt") MultipartFile myFile) {
+    public boolean saveLossDamageWaiver(@RequestPart("receipt") MultipartFile myFile) {
         try {
+
+            System.out.println(java.time.LocalDate.now());
+
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            File uploadsDir = new File(projectPath + "/rent");
+            File uploadsDir = new File(projectPath + "/rent/"+java.time.LocalDate.now());
             uploadsDir.mkdir();
             myFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + myFile.getOriginalFilename()));
             System.out.println(myFile.getOriginalFilename());

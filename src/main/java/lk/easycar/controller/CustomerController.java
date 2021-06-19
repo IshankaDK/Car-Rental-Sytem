@@ -51,13 +51,32 @@ public class CustomerController {
         }
     }
 
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean updateLicenseFiles(@RequestPart("license") MultipartFile licenseFile) {
+        try {
+            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+            File uploadsDir = new File(projectPath + "/customer/update");
+            uploadsDir.mkdir();
+            licenseFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + licenseFile.getOriginalFilename()));
+            System.out.println(licenseFile.getOriginalFilename());
+            return true;
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public void deleteCustomer(@RequestParam String email) {
         boolean b = service.deleteCustomer(email);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateCustomer(@RequestBody CustomerDTO dto) {
+    public boolean updateCustomer(@RequestBody CustomerDTO dto) {
         boolean b = service.updateCustomer(dto);
+        return b;
     }
 
     @GetMapping(params = {"email"} ,produces = MediaType.APPLICATION_JSON_VALUE)

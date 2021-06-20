@@ -1,5 +1,6 @@
 package lk.easycar.repo;
 
+import lk.easycar.entity.Customer;
 import lk.easycar.entity.Rent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,4 +13,5 @@ import java.util.ArrayList;
 public interface RentRepo extends JpaRepository<Rent,Long> {
 
     ArrayList<Rent> findRentByStatus(String status);
+    ArrayList<Rent> findRentByCustomerEmail_Email(String email);
 }

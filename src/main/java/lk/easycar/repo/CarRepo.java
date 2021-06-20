@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public interface CarRepo extends JpaRepository<Car,String> {
 
-    ArrayList<Car> findCarByCarType(String type);
-    ArrayList<Car> findCarByBrand(String brand);
+    ArrayList<Car> findCarByCarTypeAndStatus(String type,String status);
+    ArrayList<Car> findCarByBrandAndStatus(String brand,String status);
     ArrayList<Car> findCarByStatus(String status);
 }

@@ -80,4 +80,14 @@ public class RentController {
         }
         return rentsByStatus;
     }
+
+
+    @GetMapping(params = {"email"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<RentDTO> getRentRequestsForCustomer(String email){
+        ArrayList<RentDTO> rentsByEmail = service.getRentsByEmail(email);
+        for (RentDTO rentDTO : rentsByEmail) {
+            System.out.println(rentDTO.toString());
+        }
+        return rentsByEmail;
+    }
 }

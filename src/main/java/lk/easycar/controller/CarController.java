@@ -60,24 +60,24 @@ public class CarController {
         }
         return allCars;
     }
-    @GetMapping(params = {"type"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<CarDTO>  searchCarByType(String type){
-        ArrayList<CarDTO> carByType = service.findCarByType(type);
+    @GetMapping(params = {"type","status"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<CarDTO>  searchCarByType(String type,String status ){
+        ArrayList<CarDTO> carByType = service.findCarByType(type,status);
         for (CarDTO carDTO : carByType) {
             System.out.println(carDTO.toString());
         }
         return carByType;
     }
-    @GetMapping(params = {"brand"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<CarDTO>  searchCarByBrand(String brand){
-        ArrayList<CarDTO> carByBrand= service.findCarByBrand(brand);
+    @GetMapping(params = {"brand","status"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<CarDTO>  searchCarByBrand(String brand,String status){
+        ArrayList<CarDTO> carByBrand= service.findCarByBrand(brand,status);
         for (CarDTO carDTO : carByBrand) {
             System.out.println(carDTO.toString());
         }
         return carByBrand;
     }
 
-    @GetMapping(params = {"status"},produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(params = {"status"} ,produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<CarDTO>  searchCarByAvailability(String status){
         ArrayList<CarDTO> carByStatus = service.findCarByStatus(status);
         for (CarDTO carDTO : carByStatus) {

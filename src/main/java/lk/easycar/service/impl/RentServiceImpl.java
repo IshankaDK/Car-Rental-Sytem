@@ -75,4 +75,10 @@ public class RentServiceImpl implements RentService {
         ArrayList<Rent> rentByStatus = rentRepo.findRentByStatus(status);
         return mapper.map(rentByStatus,new TypeToken<ArrayList<RentDTO>>(){}.getType());
     }
+
+    @Override
+    public ArrayList<RentDTO> getRentsByEmail(String email) {
+        ArrayList<Rent> rentByStatus = rentRepo.findRentByCustomerEmail_Email(email);
+        return mapper.map(rentByStatus,new TypeToken<ArrayList<RentDTO>>(){}.getType());
+    }
 }

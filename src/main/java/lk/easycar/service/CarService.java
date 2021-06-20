@@ -15,7 +15,7 @@ public interface CarService {
     boolean updateCar(CarDTO dto);
     CarDTO searchCar(String carId);
     ArrayList<CarDTO> getAllCars();
-    ArrayList<CarDTO> findCarByType(String type);
-    ArrayList<CarDTO> findCarByBrand(String brand);
+    ArrayList<CarDTO> findCarByType(String type,String status);
+    ArrayList<CarDTO> findCarByBrand(String brand,String status);
     ArrayList<CarDTO> findCarByStatus(String status);
 }

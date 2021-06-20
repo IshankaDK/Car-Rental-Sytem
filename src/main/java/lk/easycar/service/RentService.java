@@ -15,4 +15,5 @@ public interface RentService {
     RentDTO searchRent(Long id);
     ArrayList<RentDTO> getAllRents();
     ArrayList<RentDTO> getRentsByStatus(String status);
+    ArrayList<RentDTO> getRentsByEmail(String email);
 }

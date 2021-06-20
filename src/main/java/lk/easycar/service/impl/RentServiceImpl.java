@@ -69,4 +69,10 @@ public class RentServiceImpl implements RentService {
         List<Rent> all = rentRepo.findAll();
         return mapper.map(all, new TypeToken<ArrayList<RentDTO>>(){}.getType());
     }
+
+    @Override
+    public ArrayList<RentDTO> getRentsByStatus(String status) {
+        ArrayList<Rent> rentByStatus = rentRepo.findRentByStatus(status);
+        return mapper.map(rentByStatus,new TypeToken<ArrayList<RentDTO>>(){}.getType());
+    }
 }

@@ -14,4 +14,5 @@ public interface RentService {
     boolean updateRent(RentDTO dto);
     RentDTO searchRent(Long id);
     ArrayList<RentDTO> getAllRents();
+    ArrayList<RentDTO> getRentsByStatus(String status);
 }

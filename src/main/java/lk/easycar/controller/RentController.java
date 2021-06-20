@@ -56,6 +56,13 @@ public class RentController {
             return false;
         }
     }
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean updateRent(@RequestBody RentDTO dto){
+        System.out.println(dto.toString());
+        boolean flag = service.updateRent(dto);
+        System.out.println(flag +"Rent updated");
+        return flag;
+    }
     @GetMapping
     public ArrayList<RentDTO>  getAll(){
         ArrayList<RentDTO> allRents = service.getAllRents();
@@ -65,5 +72,12 @@ public class RentController {
         return allRents;
     }
 
-
+    @GetMapping(params = {"status"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<RentDTO> getPendingRequests(String status){
+        ArrayList<RentDTO> rentsByStatus = service.getRentsByStatus(status);
+        for (RentDTO rentDTO : rentsByStatus) {
+            System.out.println(rentDTO.toString());
+        }
+        return rentsByStatus;
+    }
 }

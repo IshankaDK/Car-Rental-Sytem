@@ -16,4 +16,5 @@ public interface DriverService {
     DriverDTO searchDriver(String id);
     ArrayList<DriverDTO> getAllDriver();
     ArrayList<DriverDTO> findByStatus(String status);
+    DriverDTO findByEmail(String email);
 }

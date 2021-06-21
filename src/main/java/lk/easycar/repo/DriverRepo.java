@@ -4,6 +4,7 @@ import lk.easycar.entity.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * @author ishanka on 6/17/21 at 1:32 AM
@@ -11,4 +12,5 @@ import java.util.ArrayList;
  */
 public interface DriverRepo extends JpaRepository<Driver,String> {
     ArrayList<Driver> findDriverByDriverStatus(String status);
+    Optional<Driver> findDriverByDriverEmail(String email);
 }

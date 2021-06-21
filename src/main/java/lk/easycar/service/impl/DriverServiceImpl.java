@@ -33,6 +33,10 @@ public class DriverServiceImpl implements DriverService {
     private ModelMapper mapper;
     @Override
     public boolean AddDriver(DriverDTO dto) {
+        if (driverRepo.existsById(dto.getDriverId())) {
+//            throw new ValidateException("Customer Not Exist");
+            return false;
+        }
         driverRepo.save(mapper.map(dto, Driver.class));
         return true;
     }
@@ -79,5 +83,14 @@ public class DriverServiceImpl implements DriverService {
     public ArrayList<DriverDTO> findByStatus(String status) {
         ArrayList<Driver> driverByDriverStatus = driverRepo.findDriverByDriverStatus(status);
         return mapper.map(driverByDriverStatus,new TypeToken<ArrayList<DriverDTO>>(){}.getType());
+    }
+
+    @Override
+    public DriverDTO findByEmail(String email) {
+        Optional<Driver> driver = driverRepo.findDriverByDriverEmail(email);
+        if (driver.isPresent()){
+            return mapper.map(driver.get(), DriverDTO.class);
+        }
+        return null;
     }
 }

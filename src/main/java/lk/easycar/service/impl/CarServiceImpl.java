@@ -34,6 +34,9 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean addCar(CarDTO dto) {
+        if (carRepo.existsById(dto.getCarId())) {
+            return false;
+        }
        carRepo.save(mapper.map(dto, Car.class));
        return true;
     }

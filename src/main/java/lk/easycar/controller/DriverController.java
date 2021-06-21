@@ -52,6 +52,13 @@ public class DriverController {
         return byStatus;
     }
 
+    @GetMapping(params = {"email"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DriverDTO searchDriverByEmail(@RequestParam String email) {
+        DriverDTO byEmail = service.findByEmail(email);
+        return byEmail;
+    }
+
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<DriverDTO> getAllDrivers() {
         ArrayList<DriverDTO> list = service.getAllDriver();

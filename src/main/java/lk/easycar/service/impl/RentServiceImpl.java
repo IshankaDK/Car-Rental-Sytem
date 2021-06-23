@@ -81,4 +81,10 @@ public class RentServiceImpl implements RentService {
         ArrayList<Rent> rentByStatus = rentRepo.findRentByCustomerEmail_Email(email);
         return mapper.map(rentByStatus,new TypeToken<ArrayList<RentDTO>>(){}.getType());
     }
+
+    @Override
+    public ArrayList<RentDTO> getRentsByDriverAndStatus(String id, String status) {
+        ArrayList<Rent> driverSchedule = rentRepo.findRentByDriverId_DriverIdAndStatus(id,status);
+        return mapper.map(driverSchedule,new TypeToken<ArrayList<RentDTO>>(){}.getType());
+    }
 }

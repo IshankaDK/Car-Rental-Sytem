@@ -14,4 +14,5 @@ public interface RentRepo extends JpaRepository<Rent,Long> {
 
     ArrayList<Rent> findRentByStatus(String status);
     ArrayList<Rent> findRentByCustomerEmail_Email(String email);
+    ArrayList<Rent> findRentByDriverId_DriverIdAndStatus(String id,String status);
 }

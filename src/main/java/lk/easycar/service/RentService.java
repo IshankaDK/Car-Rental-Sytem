@@ -16,4 +16,5 @@ public interface RentService {
     ArrayList<RentDTO> getAllRents();
     ArrayList<RentDTO> getRentsByStatus(String status);
     ArrayList<RentDTO> getRentsByEmail(String email);
+    ArrayList<RentDTO> getRentsByDriverAndStatus(String id,String status);
 }

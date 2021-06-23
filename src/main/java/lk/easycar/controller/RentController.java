@@ -90,4 +90,9 @@ public class RentController {
         }
         return rentsByEmail;
     }
+    @GetMapping(params = {"id","status"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<RentDTO> getDriverSchedule(String id,String status){
+        ArrayList<RentDTO> diverSchedule = service.getRentsByDriverAndStatus(id,status);
+        return diverSchedule;
+    }
 }

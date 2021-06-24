@@ -23,6 +23,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
+
 public class RentServiceImpl implements RentService {
 
     @Autowired
@@ -86,5 +87,10 @@ public class RentServiceImpl implements RentService {
     public ArrayList<RentDTO> getRentsByDriverAndStatus(String id, String status) {
         ArrayList<Rent> driverSchedule = rentRepo.findRentByDriverId_DriverIdAndStatus(id,status);
         return mapper.map(driverSchedule,new TypeToken<ArrayList<RentDTO>>(){}.getType());
+    }
+
+    @Override
+    public Long getTodayBooking(String date, String status) {
+        return rentRepo.countRentsByStartDateAndStatus(date, status);
     }
 }

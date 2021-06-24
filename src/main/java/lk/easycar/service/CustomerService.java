@@ -14,4 +14,5 @@ public interface CustomerService {
     boolean updateCustomer(CustomerDTO dto);
     CustomerDTO searchCustomer(String email);
     ArrayList<CustomerDTO> getAllCustomer();
+    Long getNoOfCustomers();
 }

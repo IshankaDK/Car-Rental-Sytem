@@ -1,9 +1,6 @@
 package lk.easycar.controller;
 
-import lk.easycar.dto.CarDTO;
 import lk.easycar.dto.RentDTO;
-import lk.easycar.service.CarService;
-import lk.easycar.service.CustomerService;
 import lk.easycar.service.RentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,8 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * @author ishanka on 6/14/21 at 10:27 PM
@@ -94,5 +91,10 @@ public class RentController {
     public ArrayList<RentDTO> getDriverSchedule(String id,String status){
         ArrayList<RentDTO> diverSchedule = service.getRentsByDriverAndStatus(id,status);
         return diverSchedule;
+    }
+
+    @GetMapping(params = {"start","status"})
+    public Long getTodayBookings(String start,String status){
+        return service.getTodayBooking(LocalDate.now().toString(),status);
     }
 }

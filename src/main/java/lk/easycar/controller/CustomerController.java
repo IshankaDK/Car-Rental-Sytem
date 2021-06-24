@@ -89,6 +89,11 @@ public class CustomerController {
     public void getAllCustomers() {
         ArrayList<CustomerDTO> allCustomer = service.getAllCustomer();
     }
+
+    @GetMapping
+    public Long noOfCustomers(){
+        return service.getNoOfCustomers();
+    }
 }
 //{
 //        "email":"idk@ada",

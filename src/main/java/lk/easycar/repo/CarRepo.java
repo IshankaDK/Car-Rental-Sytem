@@ -2,6 +2,7 @@ package lk.easycar.repo;
 
 import lk.easycar.dto.CarDTO;
 import lk.easycar.entity.Car;
+import org.omg.CORBA.portable.Streamable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;
